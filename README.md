@@ -9,6 +9,20 @@
 - 一键写入 Zotero（手动选择分类）
 - 支持“VPN -> 学校图书馆 -> CNKI / Web of Science”访问流程
 
+## 界面预览
+
+### 首页（单框检索 + 一键流程入口）
+
+![首页界面](docs/screenshots/01-home.png)
+
+### 检索结果（中英标题/摘要 + 下载/Zotero）
+
+![检索结果界面](docs/screenshots/02-results.png)
+
+### 设置面板（Zotero + VPN + 数据库入口）
+
+![设置界面](docs/screenshots/03-settings.png)
+
 ## 为什么好用
 
 - 面向教师/研究者的真实流程设计：检索、判断、下载、入库一屏完成
