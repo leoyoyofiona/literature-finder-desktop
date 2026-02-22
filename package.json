@@ -1,13 +1,15 @@
 {
   "name": "literature-finder-desktop",
-  "version": "0.1.0",
-  "description": "macOS desktop app for literature search with Zotero integration",
+  "version": "0.1.3",
+  "description": "Desktop app for literature search with Zotero integration",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "dev": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder -m"
+    "dist": "npm run dist:mac",
+    "dist:mac": "electron-builder -m",
+    "dist:win": "electron-builder -w nsis portable --x64"
   },
   "author": "",
   "license": "MIT",
@@ -21,6 +23,7 @@
   "build": {
     "appId": "com.example.literaturefinder",
     "productName": "学术文献检索助手",
+    "artifactName": "literature-finder-${version}-${arch}.${ext}",
     "directories": {
       "output": "dist"
     },
@@ -36,6 +39,30 @@
         "dmg",
         "zip"
       ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "literature-finder-${version}-setup-${arch}.${ext}"
+    },
+    "portable": {
+      "artifactName": "literature-finder-${version}-portable-${arch}.${ext}"
     }
   }
 }

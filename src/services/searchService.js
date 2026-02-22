@@ -2,7 +2,8 @@ const { XMLParser } = require('fast-xml-parser');
 const { toBilingualAbstract, toBilingualText } = require('./translator');
 
 const REQUEST_HEADERS = {
-  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X)',
+  'User-Agent':
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
 };
 const pdfReachabilityCache = new Map();
 const DEFAULT_LINK_CONFIG = {

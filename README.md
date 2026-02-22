@@ -1,8 +1,8 @@
-# 学术文献检索助手（macOS）
+# 学术文献检索助手（Desktop）
 
 ## 中文介绍
 
-`学术文献检索助手` 是一个面向教师与研究者的 macOS 桌面工具。  
+`学术文献检索助手` 是一个面向教师与研究者的桌面工具（macOS / Windows）。  
 它把检索、筛选、下载、入库整合到一个界面：输入关键词后，返回可下载文献并提供中英标题/摘要对照；你可以一键下载 PDF，或一键写入 Zotero 指定分类。  
 工具支持“VPN -> 学校图书馆 -> CNKI / Web of Science”访问流程，适合在校内外统一使用。
 
@@ -12,7 +12,7 @@
 
 ## English Introduction
 
-`Literature Finder Desktop` is a macOS app designed for researchers and faculty members.  
+`Literature Finder Desktop` is a cross-platform desktop app (macOS / Windows) designed for researchers and faculty members.  
 It combines search, evaluation, downloading, and Zotero filing into one workflow: type a query, get downloadable papers with bilingual title/abstract display, then save PDF or send the item to a selected Zotero collection in one click.  
 It also supports a campus-access workflow via `VPN -> Library Portal -> CNKI / Web of Science`, making it practical for both on-campus and off-campus use.
 
@@ -75,6 +75,16 @@ Primary coverage:
 ## 2 分钟上手
 
 ### 1) 安装与启动
+
+推荐直接下载发行版：
+
+- macOS：`literature-finder-<version>-<arch>.dmg`
+- Windows 安装版：`literature-finder-<version>-setup-x64.exe`
+- Windows 便携版：`literature-finder-<version>-portable-x64.exe`
+
+发布页：<https://github.com/leoyoyofiona/literature-finder-desktop/releases/latest>
+
+从源码启动：
 
 ```bash
 npm install
@@ -139,10 +149,11 @@ https://example.edu.cn/proxy/cnki?kw={query}
 - `src/services/translator.js`：双语转换
 - `src/services/zoteroService.js`：Zotero API 连接与写入
 
-## 打包 macOS App
+## 打包应用（macOS / Windows）
 
 ```bash
-npm run dist
+npm run dist:mac
+npm run dist:win
 ```
 
 输出目录：`dist/`
