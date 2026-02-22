@@ -1,5 +1,25 @@
 # 学术文献检索助手（macOS）
 
+## 中文介绍
+
+`学术文献检索助手` 是一个面向教师与研究者的 macOS 桌面工具。  
+它把检索、筛选、下载、入库整合到一个界面：输入关键词后，返回可下载文献并提供中英标题/摘要对照；你可以一键下载 PDF，或一键写入 Zotero 指定分类。  
+工具支持“VPN -> 学校图书馆 -> CNKI / Web of Science”访问流程，适合在校内外统一使用。
+
+主要检索覆盖：  
+- 程序内聚合检索：OpenAlex、arXiv  
+- 学校订阅入口检索：CNKI、Web of Science、Google Scholar、OpenScholar
+
+## English Introduction
+
+`Literature Finder Desktop` is a macOS app designed for researchers and faculty members.  
+It combines search, evaluation, downloading, and Zotero filing into one workflow: type a query, get downloadable papers with bilingual title/abstract display, then save PDF or send the item to a selected Zotero collection in one click.  
+It also supports a campus-access workflow via `VPN -> Library Portal -> CNKI / Web of Science`, making it practical for both on-campus and off-campus use.
+
+Primary coverage:  
+- Built-in aggregated search: OpenAlex, arXiv  
+- Institution subscription entry search: CNKI, Web of Science, Google Scholar, OpenScholar
+
 把“找文献”这件事变成一个顺滑动作：
 
 - 一个检索框输入关键词/句子/作者/标题片段
