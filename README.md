@@ -9,6 +9,20 @@
 - 一键写入 Zotero（手动选择分类）
 - 支持“VPN -> 学校图书馆 -> CNKI / Web of Science”访问流程
 
+## 主要检索数据库
+
+程序内聚合检索（自动返回可下载结果）：
+
+- OpenAlex
+- arXiv
+
+学校订阅入口检索（通过 VPN/图书馆权限访问）：
+
+- CNKI（中国知网）
+- Web of Science
+- Google Scholar
+- OpenScholar（Semantic Scholar）
+
 ## 界面预览
 
 ### 首页（单框检索 + 一键流程入口）
