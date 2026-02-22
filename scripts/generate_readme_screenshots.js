@@ -6,12 +6,12 @@ const projectRoot = path.resolve(__dirname, '..');
 const screenshotsDir = path.join(projectRoot, 'docs', 'screenshots');
 
 const defaultSettings = {
-  downloadDirectory: '/Users/leo/Downloads/Papers',
+  downloadDirectory: '/Users/example/Downloads/Papers',
   zoteroUserId: '1234567',
   zoteroApiKey: '***',
   zoteroLibraryType: 'users',
-  vpnLoginUrl: 'https://vpn.zjnu.edu.cn/',
-  libraryHomeUrl: 'https://lib.zjnu.edu.cn/',
+  vpnLoginUrl: 'https://vpn.example.edu.cn/',
+  libraryHomeUrl: 'https://library.example.edu.cn/',
   googleScholarUrl: 'https://scholar.google.com/scholar?q={query}',
   cnkiUrl: 'https://kns.cnki.net/kns8s/defaultresult/index?kw={query}',
   webOfScienceUrl: 'https://www.webofscience.com/wos/woscc/basic-search?query={query}',
@@ -85,7 +85,7 @@ async function registerMockIpcHandlers() {
   ipcMain.handle('app:save-settings', async (_event, partial) => ({ ...defaultSettings, ...(partial || {}) }));
   ipcMain.handle('app:pick-download-directory', async () => ({
     canceled: false,
-    directory: '/Users/leo/Downloads/Papers',
+    directory: '/Users/example/Downloads/Papers',
   }));
   ipcMain.handle('app:open-external', async () => ({ ok: true }));
   ipcMain.handle('app:search-literature', async (_event, payload) => ({
@@ -96,7 +96,7 @@ async function registerMockIpcHandlers() {
   }));
   ipcMain.handle('app:download-pdf', async () => ({
     canceled: false,
-    filePath: '/Users/leo/Downloads/Papers/demo.pdf',
+    filePath: '/Users/example/Downloads/Papers/demo.pdf',
     usedUrl: 'https://example.org/paper.pdf',
   }));
 
