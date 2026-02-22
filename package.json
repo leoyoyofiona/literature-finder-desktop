@@ -1,0 +1,41 @@
+{
+  "name": "literature-finder-desktop",
+  "version": "0.1.0",
+  "description": "macOS desktop app for literature search with Zotero integration",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -m"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "fast-xml-parser": "^5.3.7"
+  },
+  "devDependencies": {
+    "electron": "^40.6.0",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.leo.literaturefinder",
+    "productName": "学术文献检索助手",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.education",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    }
+  }
+}

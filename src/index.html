@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>学术文献检索助手</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="top-hero">
+        <h1>学术文献检索助手</h1>
+        <p>单框检索，统一展示，全部结果可下载 PDF，并一键写入 Zotero。</p>
+      </header>
+
+      <section class="search-panel">
+        <form id="searchForm" class="search-form">
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="输入关键词、句子、作者名、标题片段..."
+            autocomplete="off"
+            required
+          />
+          <button id="searchBtn" type="submit">开始检索</button>
+        </form>
+
+        <div class="search-tools">
+          <label>
+            排序
+            <select id="sortSelect">
+              <option value="relevance">相关度</option>
+              <option value="year_desc">时间（新到旧）</option>
+              <option value="year_asc">时间（旧到新）</option>
+              <option value="citations_desc">被引（高到低）</option>
+              <option value="citations_asc">被引（低到高）</option>
+            </select>
+          </label>
+
+          <label>
+            返回数量
+            <select id="limitSelect">
+              <option value="10">10</option>
+              <option value="20" selected>20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+              <option value="50">50</option>
+            </select>
+          </label>
+
+          <span class="hint-pill">仅展示可下载 PDF 的文献</span>
+        </div>
+
+        <div class="workflow-tools">
+          <button id="openVpnQuickBtn" type="button">1. 打开 VPN 登录页</button>
+          <button id="openLibraryQuickBtn" type="button">2. 打开学校图书馆</button>
+          <button id="openCnkiQuickBtn" type="button">3. 打开学校 CNKI</button>
+          <button id="openWosQuickBtn" type="button">4. 打开学校 Web of Science</button>
+        </div>
+      </section>
+
+      <details class="settings-panel">
+        <summary>设置（下载目录 + Zotero + VPN/数据库入口）</summary>
+
+        <div class="settings-grid">
+          <div class="setting-row">
+            <label>默认下载目录</label>
+            <div class="inline-group">
+              <input id="downloadDir" type="text" readonly />
+              <button id="pickDirBtn" type="button">选择目录</button>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <label for="zoteroUserId">Zotero User ID</label>
+            <input id="zoteroUserId" type="text" placeholder="可留空，测试连接时自动识别" />
+          </div>
+
+          <div class="setting-row">
+            <label for="zoteroApiKey">Zotero API Key</label>
+            <input id="zoteroApiKey" type="password" placeholder="在 zotero.org 创建" />
+          </div>
+
+          <div class="setting-row">
+            <label for="zoteroLibraryType">库类型</label>
+            <select id="zoteroLibraryType">
+              <option value="users" selected>个人库 (users)</option>
+              <option value="groups">群组库 (groups)</option>
+            </select>
+          </div>
+
+          <div class="inline-actions">
+            <button id="saveSettingsBtn" type="button">保存设置</button>
+            <button id="testZoteroBtn" type="button">测试 Zotero 连接</button>
+            <button id="loadCollectionsBtn" type="button">加载 Zotero 分类</button>
+          </div>
+
+          <div class="setting-row">
+            <label for="collectionSelect">当前 Zotero 分类（手动选择）</label>
+            <select id="collectionSelect">
+              <option value="">不指定（保存到根目录）</option>
+            </select>
+          </div>
+
+          <div class="setting-row">
+            <label for="vpnLoginUrl">学校 VPN 登录地址（可选）</label>
+            <div class="inline-group">
+              <input
+                id="vpnLoginUrl"
+                type="text"
+                placeholder="粘贴学校 VPN 登录页地址（例如图书馆校外访问入口）"
+              />
+              <button id="openVpnBtn" type="button">打开 VPN 登录页</button>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <label for="libraryHomeUrl">学校图书馆入口地址（可选）</label>
+            <input
+              id="libraryHomeUrl"
+              type="text"
+              placeholder="例如浙师大图书馆主页或校外访问中间页"
+            />
+          </div>
+
+          <div class="setting-row">
+            <label for="googleScholarUrl">Google Scholar 入口（可选，支持 {query}）</label>
+            <input
+              id="googleScholarUrl"
+              type="text"
+              placeholder="https://scholar.google.com/scholar?q={query}"
+            />
+          </div>
+
+          <div class="setting-row">
+            <label for="cnkiUrl">学校 CNKI 入口（可选，支持 {query}）</label>
+            <input
+              id="cnkiUrl"
+              type="text"
+              placeholder="建议填学校图书馆提供的 CNKI 入口地址"
+            />
+          </div>
+
+          <div class="setting-row">
+            <label for="webOfScienceUrl">学校 Web of Science 入口（可选，支持 {query}）</label>
+            <input id="webOfScienceUrl" type="text" />
+          </div>
+
+          <div class="setting-row">
+            <label for="openScholarUrl">OpenScholar 入口（可选，支持 {query}）</label>
+            <input id="openScholarUrl" type="text" />
+          </div>
+        </div>
+      </details>
+
+      <section id="statusBox" class="status-box info">准备就绪</section>
+      <section id="warningBox" class="warning-box hidden"></section>
+
+      <main id="results" class="results"></main>
+    </div>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>
