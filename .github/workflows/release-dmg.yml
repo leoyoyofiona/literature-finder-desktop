@@ -27,6 +27,13 @@ jobs:
 
       - name: Build macOS artifacts
         run: npm run dist
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+          DEBUG: "electron-builder"
+
+      - name: Show dist files
+        if: always()
+        run: ls -lah dist || true
 
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
